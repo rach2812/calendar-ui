@@ -1,16 +1,19 @@
 export class Event {
-    title: string;
-    location: string;
-    description: string;
-    startDate: Date;
-    endDate: Date;
+    public id: number;
+    public title: string;
+    public location: string;
+    public description: string;
+    public startDate: string;
+    public endDate: string;
 
     constructor(
-        title: string, 
-        location: string, 
-        description: string, 
-        startDate: Date,
-        endDate: Date) {
+        id: number,
+        title: string,
+        location: string,
+        description: string,
+        startDate: string,
+        endDate: string) {
+        this.id = id;
         this.title = title;
         this.location = location;
         this.description = description;

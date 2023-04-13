@@ -1,7 +1,8 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { EventsService } from 'src/app/services/events.service';
+import { Event } from 'src/app/models/event';
 
 
 @Component({
@@ -26,15 +27,10 @@ export class EventsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.eventsService.getEvents().subscribe(e => {
-      this.rawEvents.concat(e);
+    this.eventsService.getEvents().subscribe(resp => {
+      this.rawEvents = resp;
       console.log(this.rawEvents);
     });
-  }
-
-  getEvents(events: []) {
-    // this.events = events;
-    this.changeDetector.detectChanges;
   }
 
 }
