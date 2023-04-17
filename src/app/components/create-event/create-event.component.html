@@ -2,13 +2,6 @@
     <h1>Create an event</h1>
     <form class="form" [formGroup]="createEventForm" (ngSubmit)="onSubmit()" >
       <div class="form-group"></div>
-      <div class="row">
-        <label for="id">Id</label>
-        <input type="number" class="form-control" id="id" required formControlName="id">
-        <div *ngIf="this.isControlInvalid(createEventForm.controls['id'])" class="error">
-            Id is required
-        </div>
-      </div>
       
       <div class="row">
         <label for="title">Title</label>

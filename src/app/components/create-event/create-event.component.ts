@@ -15,7 +15,6 @@ export class CreateEventComponent {
     this.eventsService = eventsService;
 
     this.createEventForm = this.fb.group({
-      id: ['', Validators.required],
       title: ['', Validators.required],
       location: ['', Validators.required],
       description: ['', Validators.required],
@@ -28,8 +27,9 @@ export class CreateEventComponent {
     if (this.createEventForm.valid) {
       this.eventsService.postEvent(this.constructEventPayload()).subscribe(resp => {
         alert('Successful event creation');
+        this.clearForm();
       }, error => {
-        alert('Error creating event');
+        alert(`Error creating event: ${error}`);
       });
     }
   }
@@ -40,12 +40,16 @@ export class CreateEventComponent {
 
 
   public constructEventPayload(): Event {
-    return new Event(Number(this.createEventForm.get('id')?.value),
+    return new Event(
       this.createEventForm.get('title')?.value,
       this.createEventForm.get('location')?.value,
       this.createEventForm.get('description')?.value,
       this.createEventForm.get('startDate')?.value,
       this.createEventForm.get('endDate')?.value);
+  }
+
+  private clearForm() {
+    Object.values(this.createEventForm.controls).forEach((control) => control.reset());
   }
 
 }
