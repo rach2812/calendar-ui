@@ -37,15 +37,15 @@ export class CreateEventComponent {
   public isControlInvalid(control: AbstractControl) {
     return control && (control.touched || control.dirty) && control.invalid;
   }
-  
+
 
   public constructEventPayload(): Event {
-    return new Event(Number(this.createEventForm.get('id')?.value), 
-    this.createEventForm.get('title')?.value,
-    this.createEventForm.get('location')?.value,
-    this.createEventForm.get('description')?.value,
-    this.createEventForm.get('startDate')?.value,
-    this.createEventForm.get('endDate')?.value);
+    return new Event(Number(this.createEventForm.get('id')?.value),
+      this.createEventForm.get('title')?.value,
+      this.createEventForm.get('location')?.value,
+      this.createEventForm.get('description')?.value,
+      this.createEventForm.get('startDate')?.value,
+      this.createEventForm.get('endDate')?.value);
   }
 
 }
