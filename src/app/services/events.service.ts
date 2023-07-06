@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AppSettings } from '../app-settings';
 import { Event } from '../models/event';
@@ -11,11 +11,12 @@ export class EventsService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getEvents(): Observable<Event[]> {
-    return this.httpClient.get<Event[]>(AppSettings.EVENTS_URL);
-    }
+  public getEvents(selectedDate: Date): Observable<Event[]> {
+    let params = new HttpParams().set("selectedDate",selectedDate.toDateString());
+    return this.httpClient.get<Event[]>(AppSettings.EVENTS_URL, { params: params });
+  }
 
-    public postEvent(eventReq: Event): Observable<any> {
-      return this.httpClient.post<Event>(AppSettings.EVENTS_URL, eventReq);
-    }
+  public postEvent(eventReq: Event): Observable<any> {
+    return this.httpClient.post<Event>(AppSettings.EVENTS_URL, eventReq);
+  }
 }

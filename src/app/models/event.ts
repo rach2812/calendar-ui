@@ -2,15 +2,15 @@ export class Event {
     public title: string;
     public location: string;
     public description: string;
-    public startDate: string;
-    public endDate: string;
+    public startDate: Date;
+    public endDate: Date;
 
     constructor(
         title: string,
         location: string,
         description: string,
-        startDate: string,
-        endDate: string) {
+        startDate: Date,
+        endDate: Date) {
         this.title = title;
         this.location = location;
         this.description = description;

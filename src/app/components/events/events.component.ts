@@ -27,10 +27,10 @@ export class EventsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.eventsService.getEvents().subscribe(resp => {
-      this.rawEvents = resp;
-      console.log(this.rawEvents);
-    });
+  //   this.eventsService.getEvents().subscribe(resp => {
+  //     this.rawEvents = resp;
+  //     console.log(this.rawEvents);
+  //   });
   }
 
 }

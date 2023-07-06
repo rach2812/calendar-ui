@@ -7,12 +7,14 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateEventComponent } from './components/create-event/create-event.component';
+import { DisplayEventsComponent } from './components/display-events/display-events.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EventsComponent,
-    CreateEventComponent
+    CreateEventComponent,
+    DisplayEventsComponent
   ],
   imports: [
     BrowserModule,
