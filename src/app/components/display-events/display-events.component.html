@@ -1,29 +1,32 @@
 <div class="container">
-    <h1>Create an event</h1>
-    <button (click)="this.getEvents()">Get events</button>
-    <ul>
-        <li *ngFor="let event of this.eventsList">
-            <p>{{ event.title }}</p>
-            <p>{{ event.location }}</p>
-            <p>{{ event.description }}</p>
-            <p>{{ event.startDate.toLocaleDateString() }}</p>
-            <p>{{ event.endDate.toLocaleDateString() }}</p>
-        </li>
-        
-    </ul>
-    <!-- <form class="form" [formGroup]="createEventForm" (ngSubmit)="onSubmit()" >
-      <div class="form-group"></div>
-
-      <div class="row">
-        <label for="date">Date</label>
-        <input type="date" class="form-control" id="startDate" required formControlName="startDate">
-        <div *ngIf="this.isControlInvalid(createEventForm.controls['startDate'])" class="error">
-            Start date is required
+    <h1>Events calendar</h1>
+    <div class="row">
+        <div class="col-md-6 m-1">
+            <button type="button" class="btn btn-primary float-end" routerLink="/create-event">Add event</button>
         </div>
-      </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <full-calendar [options]="calendarOptions">
+                <ng-template #eventContent let-arg>
+                    <b>{{arg.timeText}}</b>
+                    <i>{{arg.event.title}}</i>
+                </ng-template>
+            </full-calendar>
+        </div>
+        <div class="col-md-6">
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let event of this.eventsList">
+                    <h5>{{ event.title }}</h5>
+                    <div>{{ event.location }}</div>
+                    <div>{{ event.description }}</div>
+                    <div>{{ event.startDate.toLocaleDateString() }} - {{ event.endDate.toLocaleDateString() }}</div>
+                </li>
+    
+            </ul>
+        </div>
 
-      <button type="submit" class="btn btn-success" [disabled]="!createEventForm.valid">Submit</button>
-      </form> -->
+    </div>
+    
 </div>
-
-      
